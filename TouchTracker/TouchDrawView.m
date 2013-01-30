@@ -28,13 +28,16 @@
         [self setMultipleTouchEnabled:YES];
         
         // Create an instance of UITaapGestureRecognizer and attach it to the TouchDrawView
+        // Now the UITapGestureRecognizer will send the message "tap:" when a tap occurs
         UITapGestureRecognizer * tapRecognizer =
                         [[UITapGestureRecognizer alloc] initWithTarget:self
                                                    action:@selector(tap:)];
         
         [self addGestureRecognizer:tapRecognizer];
-        // Now the UITapGestureRecognizer will send the message "tap:" when a tap occurs
-        // Need to implement the tap: method...
+        
+        // long press recognizer
+        UILongPressGestureRecognizer *pressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+        [self addGestureRecognizer:pressRecognizer];
     
     }
     
@@ -246,5 +249,24 @@
     // If nothing is close enough to a line, then we didn't select any line
     return nil;
 }
+
+// implement method for long press
+// when the view receives longPress:, we will select the closest line to where the gesture occured
+// when the view receives ongPress: and the long press has ended, we will deselect the line.
+- (void)longPress:(UIGestureRecognizer *)gr
+{
+    if ([gr state] == UIGestureRecognizerStateBegan) {
+        CGPoint point = [gr locationInView:self];
+        [self setSelectedLine:[self lineAtPoint:point]];
+        
+        if ([self selectedLine]) {
+            [linesInProcess removeAllObjects];
+        }
+    } else if ([gr state] == UIGestureRecognizerStateEnded) {
+            [self setSelectedLine:nil];
+    }
+    [self setNeedsDisplay];
+}
+
 
 @end
