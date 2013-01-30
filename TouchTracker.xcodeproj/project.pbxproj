@@ -19,6 +19,16 @@
 		1B3195A616B8B43800D49687 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3195A516B8B43800D49687 /* Line.m */; };
 		1B3195A916B8B5C800D49687 /* TouchDrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3195A816B8B5C800D49687 /* TouchDrawView.m */; };
 		1B3195AC16B8B91200D49687 /* TouchViewControler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3195AB16B8B91200D49687 /* TouchViewControler.m */; };
+		1B3195BA16B9608A00D49687 /* Touch_Tracker_57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B3195B916B9608A00D49687 /* Touch_Tracker_57x57.png */; };
+		1B3195BC16B9608F00D49687 /* Touch_Tracker_114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B3195BB16B9608F00D49687 /* Touch_Tracker_114x114.png */; };
+		1B3195BE16B9609300D49687 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B3195BD16B9609300D49687 /* Default.png */; };
+		1B3195C016B9609800D49687 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B3195BF16B9609800D49687 /* Default@2x.png */; };
+		1B3195C216B960AA00D49687 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B3195C116B960AA00D49687 /* Default-Portrait~ipad.png */; };
+		1B3195C416B960B200D49687 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B3195C316B960B200D49687 /* Default-Landscape~ipad.png */; };
+		1B3195C616B960BD00D49687 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B3195C516B960BD00D49687 /* Default-Landscape@2x~ipad.png */; };
+		1B3195C816B960C300D49687 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B3195C716B960C300D49687 /* Default-Portrait@2x~ipad.png */; };
+		1B3195CA16B960CC00D49687 /* Touch_Tracker_144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B3195C916B960CC00D49687 /* Touch_Tracker_144x144.png */; };
+		1B3195CE16B9617300D49687 /* Touch_Tracker_72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B3195CD16B9617300D49687 /* Touch_Tracker_72x72.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +51,16 @@
 		1B3195A816B8B5C800D49687 /* TouchDrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchDrawView.m; sourceTree = "<group>"; };
 		1B3195AA16B8B91200D49687 /* TouchViewControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchViewControler.h; sourceTree = "<group>"; };
 		1B3195AB16B8B91200D49687 /* TouchViewControler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchViewControler.m; sourceTree = "<group>"; };
+		1B3195B916B9608A00D49687 /* Touch_Tracker_57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Touch_Tracker_57x57.png; sourceTree = "<group>"; };
+		1B3195BB16B9608F00D49687 /* Touch_Tracker_114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Touch_Tracker_114x114.png; sourceTree = "<group>"; };
+		1B3195BD16B9609300D49687 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		1B3195BF16B9609800D49687 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		1B3195C116B960AA00D49687 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		1B3195C316B960B200D49687 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		1B3195C516B960BD00D49687 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		1B3195C716B960C300D49687 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		1B3195C916B960CC00D49687 /* Touch_Tracker_144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Touch_Tracker_144x144.png; sourceTree = "<group>"; };
+		1B3195CD16B9617300D49687 /* Touch_Tracker_72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Touch_Tracker_72x72.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +80,16 @@
 		1B31957816B8B41A00D49687 = {
 			isa = PBXGroup;
 			children = (
+				1B3195CD16B9617300D49687 /* Touch_Tracker_72x72.png */,
+				1B3195C916B960CC00D49687 /* Touch_Tracker_144x144.png */,
+				1B3195C716B960C300D49687 /* Default-Portrait@2x~ipad.png */,
+				1B3195C516B960BD00D49687 /* Default-Landscape@2x~ipad.png */,
+				1B3195C316B960B200D49687 /* Default-Landscape~ipad.png */,
+				1B3195C116B960AA00D49687 /* Default-Portrait~ipad.png */,
+				1B3195BF16B9609800D49687 /* Default@2x.png */,
+				1B3195BD16B9609300D49687 /* Default.png */,
+				1B3195BB16B9608F00D49687 /* Touch_Tracker_114x114.png */,
+				1B3195B916B9608A00D49687 /* Touch_Tracker_57x57.png */,
 				1B31958D16B8B41A00D49687 /* TouchTracker */,
 				1B31958616B8B41A00D49687 /* Frameworks */,
 				1B31958416B8B41A00D49687 /* Products */,
@@ -169,6 +199,16 @@
 				1B31959A16B8B41A00D49687 /* Default.png in Resources */,
 				1B31959C16B8B41A00D49687 /* Default@2x.png in Resources */,
 				1B31959E16B8B41A00D49687 /* Default-568h@2x.png in Resources */,
+				1B3195BA16B9608A00D49687 /* Touch_Tracker_57x57.png in Resources */,
+				1B3195BC16B9608F00D49687 /* Touch_Tracker_114x114.png in Resources */,
+				1B3195BE16B9609300D49687 /* Default.png in Resources */,
+				1B3195C016B9609800D49687 /* Default@2x.png in Resources */,
+				1B3195C216B960AA00D49687 /* Default-Portrait~ipad.png in Resources */,
+				1B3195C416B960B200D49687 /* Default-Landscape~ipad.png in Resources */,
+				1B3195C616B960BD00D49687 /* Default-Landscape@2x~ipad.png in Resources */,
+				1B3195C816B960C300D49687 /* Default-Portrait@2x~ipad.png in Resources */,
+				1B3195CA16B960CC00D49687 /* Touch_Tracker_144x144.png in Resources */,
+				1B3195CE16B9617300D49687 /* Touch_Tracker_72x72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

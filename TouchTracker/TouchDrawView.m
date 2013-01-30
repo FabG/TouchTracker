@@ -13,6 +13,8 @@
 // and any that are currently being drawn
 @implementation TouchDrawView
 
+@ synthesize selectedLine;
+
 - (id)initWithFrame:(CGRect)r
 {
     self = [super initWithFrame:r];
@@ -24,11 +26,38 @@
         
         // Enable Multi Touch events
         [self setMultipleTouchEnabled:YES];
+        
+        // Create an instance of UITaapGestureRecognizer and attach it to the TouchDrawView
+        UITapGestureRecognizer * tapRecognizer =
+                        [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                   action:@selector(tap:)];
+        
+        [self addGestureRecognizer:tapRecognizer];
+        // Now the UITapGestureRecognizer will send the message "tap:" when a tap occurs
+        // Need to implement the tap: method...
+    
     }
     
     return self;
 }
 
+
+// Implement tap: method
+- (void)tap:(UIGestureRecognizer *)gr
+{
+    NSLog(@"UIGestureRecognizer tap");
+    
+    // Get tap point and make the returned line the SelectedLine
+    CGPoint point = [gr locationInView:self];
+    [self setSelectedLine:[self lineAtPoint:point]];
+    
+    // If we just tapped, remove all lines in process
+    // so that a tap does not result in a new line
+    [linesInProcess removeAllObjects];
+    
+    [self setNeedsDisplay];
+    
+}
 
 // override drawRect: method to create lines using functions from Core Graphics
 - (void)drawRect:(CGRect)rect
@@ -51,6 +80,14 @@
         Line *line = [linesInProcess objectForKey:v];
         CGContextMoveToPoint(context, [line begin].x, [line begin].y);
         CGContextAddLineToPoint(context, [line end].x, [line end].y);
+        CGContextStrokePath(context);
+    }
+    
+    // If there is a selected line, draw it
+    if ([self selectedLine]) {
+        [[UIColor greenColor]set];
+        CGContextMoveToPoint(context, [[self selectedLine] begin].x  , [[self selectedLine]begin].y);
+        CGContextAddLineToPoint(context, [[self selectedLine] end].x, [[self selectedLine] end].y);
         CGContextStrokePath(context);
     }
 }
@@ -146,6 +183,31 @@
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self endTouches:touches];
+}
+
+// implement method to find line close to a point
+- (Line *)lineAtPoint:(CGPoint)p
+{
+    // Find a line clsoe to p
+    for (Line *l in completeLines) {
+        CGPoint start = [l begin];
+        CGPoint end = [l end];
+        
+        // Check a few points in the line
+        for (float t = 0.0; t <= 1.0; t+=0.05)
+        {
+            float x = start.x + t * (end.x - start.x);
+            float y = start.y + t * (end.y - start.y);
+            
+            // If the tapped point is within 20 points, let's return this line
+            if (hypot(x - p.x, y - p.y) < 20.0) {
+                return l;
+            }
+        }
+        
+    }
+    // If nothing is close enough to a line, then we didn't select any line
+    return nil;
 }
 
 @end
