@@ -55,8 +55,45 @@
     // so that a tap does not result in a new line
     [linesInProcess removeAllObjects];
     
+    // Adding a Menu controller to Copy or Delete the selected line
+    if ([self selectedLine]) {
+        [self becomeFirstResponder];    // required for a menucontroller to appear
+        
+        // Grab the menu controller
+        UIMenuController *menu = [UIMenuController sharedMenuController];
+        
+        // Create a new "Delete" UIMenuItem
+        UIMenuItem *deleteItem = [[UIMenuItem alloc] initWithTitle:@"Delete" action:@selector(deleteLine:)];
+        [menu setMenuItems:[NSArray arrayWithObject:deleteItem]];
+        
+        // Tell the menu where it should come from and show it
+        [menu setTargetRect:CGRectMake(point.x, point.y, 2, 2) inView:self];
+        [menu setMenuVisible:YES animated:YES];
+    }
+    else
+    {
+        // Hide the menu if no line is selected
+        [[UIMenuController sharedMenuController]setMenuVisible:NO animated:YES];
+    }
+    
     [self setNeedsDisplay];
     
+}
+
+
+- (BOOL)canBecomeFirstResponder
+{
+    return YES;     // so that the view can become first responder and show the MenuItem
+}
+
+// MenuItem Delete
+- (void)delete:(id)sender
+{
+    // Remove the selected line from the list of completeLines
+    [completeLines removeObject:[self selectedLine]];
+    
+    // Redraw everything
+    [self setNeedsDisplay];
 }
 
 // override drawRect: method to create lines using functions from Core Graphics
