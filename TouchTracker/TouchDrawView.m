@@ -38,9 +38,14 @@
         // long press recognizer
         UILongPressGestureRecognizer *pressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
         [self addGestureRecognizer:pressRecognizer];
+        
+        // instantiate UIPanGestureRecognizer and attach it to the TouchDrawView
+        moveRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(moveLine:)];
+        [moveRecognizer setDelegate:self];
+        [moveRecognizer setCancelsTouchesInView:NO];
+        [self addGestureRecognizer:moveRecognizer];
     
     }
-    
     return self;
 }
 
@@ -268,5 +273,49 @@
     [self setNeedsDisplay];
 }
 
+// implement method related to UIGestureReognizerDelegate protocol
+// to handle simultaneuous gestures recognized by the gesture recognizer(s)
+// only focus on the "Move" recognizer
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    if (gestureRecognizer == moveRecognizer)
+        return YES;
+    return NO;
+}
+
+// implement moveLine
+// Note that because we will send the gesture recognizer a method from the UIPanGestureRecognizer class,
+// the parameter of this method must be a pointer to an instance of UIPamGestureRecognizer rather than UIGestureRecognizer
+- (void)moveLine:(UIPanGestureRecognizer *)gr
+{
+    // IF we haven't selected a line, we don't do anything here
+    if (![self selectedLine])
+        return;
+    
+    // When the pan recognizer changes its position...
+    if ([gr state] == UIGestureRecognizerStateChanged) {
+        // How far has the pan moved?
+        CGPoint translation = [gr translationInView:self];
+        
+        // Add the translation to the current begin and end points of the Line
+        CGPoint begin = [[self selectedLine] begin];
+        CGPoint end = [[self selectedLine]end];
+        begin.x += translation.x;
+        begin.y += translation.y;
+        end.x += translation.x;
+        end.y += translation.y;
+        
+        // Set the new beginning and end points of the line
+        [[self selectedLine] setBegin:begin];
+        [[self selectedLine] setEnd:end];
+        
+        // Redraw the screen
+        [self setNeedsDisplay];
+        
+        // Set the translation of a pan gesture recognizer back to the zero point every time it can do this.
+        // Then the next time it reports a change, it will have the translation form the last event
+        [gr setTranslation:CGPointZero inView:self];
+    }
+}
 
 @end
